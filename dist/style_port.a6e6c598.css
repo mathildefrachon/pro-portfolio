@@ -1,0 +1,380 @@
+* {
+  font-family: Advent Pro, serif;
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: 62.5%;
+}
+
+/* 1 rem = 10 px */
+
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 0.5rem;
+}
+
+h1,
+h2,
+h3 {
+  line-height: normal;
+}
+
+p {
+  font-size: 1.8rem;
+  letter-spacing: 0.3rem;
+  font-family: Khand;
+}
+
+li {
+  font-size: 1.8rem;
+  letter-spacing: 0.3rem;
+}
+
+h1 {
+  font-size: 2.1rem;
+  font-weight: 700;
+  letter-spacing: 0.8rem;
+}
+
+h2 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin: 0;
+  letter-spacing: 0.8rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-top: 3%;
+  margin-bottom: 0;
+  letter-spacing: 0.4rem;
+}
+
+.buttons {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+}
+
+.icons {
+  width: 100%;
+  height: 100%;
+}
+
+ul {
+  color: white;
+}
+
+/* LOADER */
+
+.loader {
+  border: 8px solid white;
+  border-top: 8px solid #052d29;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  margin: auto;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  animation: spin 1.3s linear infinite;
+  opacity: 0.7;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* SCREENS */
+
+.screen {
+  position: absolute;
+  top: 0;
+  height: 100vh;
+  transition: all ease 1s forwards; /* IF BREAKS WITH SLIDE TRY TRANSFORM TRANSLATE X */
+}
+
+#welcome_screen {
+  width: 100%;
+  background: url(background_site_light.e2e42681.jpg), rgba(6, 68, 63, 0.6);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-blend-mode: overlay;
+}
+
+#project_screen {
+  left: -100vw;
+  width: 100vw;
+  background-color: #06443f;
+}
+
+#about_screen {
+  left: 100vw;
+  background-color: rgb(154, 226, 214);
+  width: 100%;
+  height: auto;
+  scroll-behavior: smooth;
+}
+
+#gallery {
+  height: 100vh;
+  width: auto;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+  scroll-behavior: smooth;
+  padding: 15vh 2vw 15vh 2vw;
+}
+
+/* WELCOMING PAGE */
+
+#logo {
+  position: absolute;
+  width: 400px;
+  height: 300px;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+/* NAV BARS */
+
+#top_nav,
+#bottom_nav {
+  width: 100vw;
+  height: 8vh;
+  background-color: none;
+  position: fixed;
+  left: 0;
+  z-index: 5;
+  padding: 2% 2%;
+}
+
+#top_nav {
+  top: 0;
+}
+
+#bottom_nav {
+  bottom: 0;
+}
+
+#top_nav a,
+#bottom_nav a {
+  color: white;
+  transition: all ease 1s;
+}
+
+#a_projects,
+#a_filters {
+  float: left;
+}
+
+#a_about,
+#a_contact {
+  float: right;
+}
+
+/* NAV ANIM */
+
+#menu a:hover {
+  border-bottom: solid white 2px;
+}
+
+/* UNDER CONSTRUCTION */
+
+#under_const {
+  width: 30vw;
+  height: 20vh;
+  position: absolute;
+  top: calc(60vh - 20vh);
+  left: 50vw;
+}
+
+#i_want_more {
+  width: 50vw;
+  height: 8vh;
+  position: absolute;
+  top: calc(70vh - 4vh);
+  left: 50vw;
+  font-size: 1em;
+  color: white;
+  font-weight: 600;
+  letter-spacing: 0.45em;
+}
+
+/* PROJECT PAGE */
+
+.project-wrapper {
+  position: relative;
+  display: inline-block;
+  object-fit: cover;
+  margin: 0 2vw;
+  box-shadow: 2px 3px 23px -4px rgba(0, 2, 0, 0.69);
+  opacity: 1;
+}
+
+.width-load {
+  width: 45vw;
+  height: 70vh;
+  margin: 0 2vw;
+}
+
+.project-img {
+  width: auto;
+  height: 70vh;
+  border: white 3px solid;
+  transition: all ease 0.3s;
+  opacity: 1;
+  filter: contrast(0.9);
+  transition: all ease 1s;
+}
+
+.project-img:hover {
+  transform: scale(1.03);
+  filter: contrast(1);
+}
+
+#project_screen #gallery h2 {
+  margin-left: 1.5rem;
+  margin-bottom: 2.5rem;
+  margin-top: 0;
+  text-shadow: 2px 2px 3px rgb(114, 114, 146);
+  line-height: 0em;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: auto;
+  z-index: 30;
+  color: white;
+}
+
+/* CONTACT PAGE */
+
+/* CONTAINERS */
+
+.contact_screen {
+  position: fixed;
+  height: 100vh;
+  margin: 0;
+  top: 0;
+  right: 0;
+  background-color: #3f4b4f;
+  z-index: 70;
+  transition: all ease 1s;
+  overflow-x: hidden;
+}
+
+.contact_text {
+  width: 100%;
+  height: 100%;
+  padding: 30% 10% 20% 10%;
+}
+
+.contact_screen h1 {
+  color: white;
+  text-align: center;
+  padding-bottom: 10%;
+}
+
+/* FORM */
+
+#contact_form input {
+  background-color: #d7f0ec;
+  border: none;
+  padding: 3%;
+  font-family: Khand;
+  font-size: 1.6rem;
+  color: #3f4b4f;
+  width: 100%;
+  border: 2px solid white;
+}
+
+#contact_form input:focus {
+  outline: none;
+}
+
+#contact_form input[type="submit"],
+#contact_form input[type="reset"] {
+  width: 20%;
+  float: right;
+  padding: 1%;
+}
+
+#contact_form input[type="reset"] {
+  margin-right: 1rem;
+}
+
+#contact_form input[value="SEND"],
+#contact_form input[value="RESET"] {
+  font-weight: 500;
+  color: #3f4b4f;
+}
+
+/* ADDRESS */
+
+.adress_container {
+  width: 80%;
+  height: 20%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 35%;
+}
+
+.contact_screen .logo {
+  position: absolute;
+  width: 30%;
+  height: auto;
+  opacity: 0.7;
+  left: calc(50% - 40%);
+}
+
+.adress {
+  margin: 0;
+  padding-top: 2%;
+  position: absolute;
+  color: white;
+  font-weight: 200;
+  right: calc(50% - 40%);
+}
+
+/* ICONS */
+
+.contact_screen .icons_container {
+  width: 80%;
+  height: 10%;
+  margin-top: 5%;
+  bottom: 0;
+  margin-bottom: 10%;
+  position: absolute;
+}
+
+.contact_screen .icons_container .icons {
+  width: 100%;
+  height: auto;
+}
+
+#crossC {
+  position: absolute;
+  top: 5%;
+  right: 10%;
+}
