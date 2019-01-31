@@ -2,17 +2,22 @@
 
 /* INFOS MENU */
 
-document.querySelector("#a_filters").addEventListener("click", displayMenu);
-document.querySelector("#crossP").addEventListener("click", displayMenu);
 const menu_project = document.querySelector("#project_infos");
 const menu_text = document.querySelector("#menu_container");
-// //BUTTONS CATEGORIES
-// document
-//   .querySelectorAll(".cat_link")
-//   .forEach(element => element.addEventListener("click", clickedFilter));
-// CLICK ON A PROJECT
 
-gallery.addEventListener("click", clickedPost);
+window.addEventListener("DOMContentLoaded", initNav);
+
+function initNav() {
+  //BUTTONS CATEGORIES
+  // document
+  //   .querySelectorAll(".cat_link")
+  //   .forEach(element => element.addEventListener("click", clickedFilter));
+  //CLICK ON A PROJECT
+  // gallery.addEventListener("click", clickedPost);
+  //MENU
+  document.querySelector("#a_filters").addEventListener("click", displayMenu);
+  document.querySelector("#crossP").addEventListener("click", displayMenu);
+}
 
 function displayMenu() {
   console.log("displayMenu");

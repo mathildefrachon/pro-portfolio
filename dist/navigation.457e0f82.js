@@ -108,16 +108,21 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 "use strict";
 /* INFOS MENU */
 
-document.querySelector("#a_filters").addEventListener("click", displayMenu);
-document.querySelector("#crossP").addEventListener("click", displayMenu);
 var menu_project = document.querySelector("#project_infos");
-var menu_text = document.querySelector("#menu_container"); // //BUTTONS CATEGORIES
-// document
-//   .querySelectorAll(".cat_link")
-//   .forEach(element => element.addEventListener("click", clickedFilter));
-// CLICK ON A PROJECT
+var menu_text = document.querySelector("#menu_container");
+window.addEventListener("DOMContentLoaded", initNav);
 
-gallery.addEventListener("click", clickedPost);
+function initNav() {
+  //BUTTONS CATEGORIES
+  // document
+  //   .querySelectorAll(".cat_link")
+  //   .forEach(element => element.addEventListener("click", clickedFilter));
+  //CLICK ON A PROJECT
+  // gallery.addEventListener("click", clickedPost);
+  //MENU
+  document.querySelector("#a_filters").addEventListener("click", displayMenu);
+  document.querySelector("#crossP").addEventListener("click", displayMenu);
+}
 
 function displayMenu() {
   console.log("displayMenu");

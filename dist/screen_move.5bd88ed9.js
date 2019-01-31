@@ -115,18 +115,17 @@ var aboutButton = document.querySelector("#a_about");
 var projectButton = document.querySelector("#a_projects");
 var imgArray = document.querySelectorAll(".imgwrapper");
 var right = "right";
-var left = "left"; //let urlParams = new URLSearchParams(window.location.search);
+var left = "left";
+window.addEventListener("DOMContentLoaded", initScreen); //let urlParams = new URLSearchParams(window.location.search);
 
-var fromSubpage = urlParams.get("fromSubpage");
-aboutButton.addEventListener("click", function () {
-  checkScreen(right);
-});
-projectButton.addEventListener("click", function () {
-  checkScreen(left);
-});
-window.onload = init();
-
-function init() {
+function initScreen() {
+  var fromSubpage = urlParams.get("fromSubpage");
+  aboutButton.addEventListener("click", function () {
+    checkScreen(right);
+  });
+  projectButton.addEventListener("click", function () {
+    checkScreen(left);
+  });
   console.log(fromSubpage);
 
   if (fromSubpage) {
@@ -261,7 +260,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53797" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60631" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);

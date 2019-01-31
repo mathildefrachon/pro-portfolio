@@ -6,6 +6,8 @@ let urlParams = new URLSearchParams(window.location.search);
 
 const gallery = document.querySelector("#gallery");
 
+window.addEventListener("DOMContentLoaded", init);
+
 /* THIS IS AFTER CLICKING ON A PROJECT / SUBPAGE */
 let cat = urlParams.get("category");
 let activeFilter = cat;
@@ -36,9 +38,6 @@ const objProject = {
 let project = "";
 const projectsArray = [];
 let currentArray = [];
-
-// FETCHING
-window.addEventListener("DOMContentLoaded", init);
 
 function init() {
   // fetch JSON

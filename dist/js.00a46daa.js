@@ -110,6 +110,7 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 var json_link = "https://portfolio-backend.mathildefrachon.com/wp-json/wp/v2/projects?_embed&per_page=20";
 var urlParams = new URLSearchParams(window.location.search);
 var gallery = document.querySelector("#gallery");
+window.addEventListener("DOMContentLoaded", init);
 /* THIS IS AFTER CLICKING ON A PROJECT / SUBPAGE */
 
 var cat = urlParams.get("category");
@@ -139,9 +140,7 @@ var objProject = {
 };
 var project = "";
 var projectsArray = [];
-var currentArray = []; // FETCHING
-
-window.addEventListener("DOMContentLoaded", init);
+var currentArray = [];
 
 function init() {
   // fetch JSON

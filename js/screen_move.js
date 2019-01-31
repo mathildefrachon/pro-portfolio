@@ -15,19 +15,19 @@ const imgArray = document.querySelectorAll(".imgwrapper");
 const right = "right";
 const left = "left";
 
+window.addEventListener("DOMContentLoaded", initScreen);
+
 //let urlParams = new URLSearchParams(window.location.search);
-let fromSubpage = urlParams.get("fromSubpage");
 
-aboutButton.addEventListener("click", function() {
-  checkScreen(right);
-});
-projectButton.addEventListener("click", function() {
-  checkScreen(left);
-});
+function initScreen() {
+  let fromSubpage = urlParams.get("fromSubpage");
 
-window.onload = init();
-
-function init() {
+  aboutButton.addEventListener("click", function() {
+    checkScreen(right);
+  });
+  projectButton.addEventListener("click", function() {
+    checkScreen(left);
+  });
   console.log(fromSubpage);
   if (fromSubpage) {
     screenProject.classList.remove("none");
