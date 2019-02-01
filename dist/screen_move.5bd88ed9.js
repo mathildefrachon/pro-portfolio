@@ -108,9 +108,9 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 "use strict"; // ANIMATION BETWEEN ABOUT AND PROJECT PAGE
 // THIS PAGE IS A MESS
 
-var screenWelcome = document.querySelector("#welcome_screen");
-var screenAbout = document.querySelector("#about_screen");
-var screenProject = document.querySelector("#project_screen");
+var screenWelcome = document.querySelector("#welcome-screen");
+var screenAbout = document.querySelector("#about-screen");
+var screenProject = document.querySelector("#project-screen");
 var aboutButton = document.querySelector("#a_about");
 var projectButton = document.querySelector("#a_projects");
 var imgArray = document.querySelectorAll(".imgwrapper");

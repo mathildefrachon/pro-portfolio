@@ -3,9 +3,9 @@
 // ANIMATION BETWEEN ABOUT AND PROJECT PAGE
 // THIS PAGE IS A MESS
 
-const screenWelcome = document.querySelector("#welcome_screen");
-const screenAbout = document.querySelector("#about_screen");
-const screenProject = document.querySelector("#project_screen");
+const screenWelcome = document.querySelector("#welcome-screen");
+const screenAbout = document.querySelector("#about-screen");
+const screenProject = document.querySelector("#project-screen");
 
 const aboutButton = document.querySelector("#a_about");
 const projectButton = document.querySelector("#a_projects");
