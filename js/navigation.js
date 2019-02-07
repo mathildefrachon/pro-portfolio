@@ -1,42 +1,41 @@
 "use strict";
 
-/* INFOS MENU */
+let contactScreen = document.querySelector("#contact-screen");
+let contactContent = document.querySelector(".contact-wrapper");
 
-const menu_project = document.querySelector("#project_infos");
-const menu_text = document.querySelector("#menu_container");
+let filterScreen = document.querySelector("#filter-screen");
+let filterContent = document.querySelector("#filter-wrapper");
+
+// menu links
+
+let menuLinkProjects = document.querySelector("#a-projects");
+let menuLinkFilters = document.querySelector("#a-filters");
+let menuLinkContact = document.querySelector("#a-contact");
 
 window.addEventListener("DOMContentLoaded", initNav);
 
 function initNav() {
   //BUTTONS CATEGORIES
-  // document
-  //   .querySelectorAll(".cat_link")
-  //   .forEach(element => element.addEventListener("click", clickedFilter));
+  document
+    .querySelectorAll(".cat-link")
+    .forEach(element => element.addEventListener("click", clickedFilter));
   //CLICK ON A PROJECT
-  // gallery.addEventListener("click", clickedPost);
-  //MENU
-  document.querySelector("#a_filters").addEventListener("click", displayMenu);
-  document.querySelector("#crossP").addEventListener("click", displayMenu);
-}
-
-function displayMenu() {
-  console.log("displayMenu");
-  if (window.innerWidth > 414) {
-    menu_project.classList.toggle("width0");
-    menu_project.classList.toggle("extendInfos");
-    setTimeout(function() {
-      menu_text.classList.toggle("opacity");
-    }, 500);
-  }
-  // FOR MOBILE
-  else {
-    console.log("display Menu Mobile");
-    menu_project.classList.toggle("width0");
-    menu_project.classList.toggle("extendMobileInfos");
-    setTimeout(function() {
-      menu_text.classList.toggle("opacity");
-    }, 500);
-  }
+  gallery.addEventListener("click", clickedPost);
+  //SIDE MENU
+  menuLinkFilters.addEventListener("click", function() {
+    openSide(filterScreen, filterContent);
+  });
+  document.querySelector("#cross-filter").addEventListener("click", function() {
+    closeSide(filterScreen, filterContent);
+  });
+  menuLinkContact.addEventListener("click", function() {
+    openSide(contactScreen, contactContent);
+  });
+  document
+    .querySelector("#cross-contact")
+    .addEventListener("click", function() {
+      closeSide(contactScreen, contactContent);
+    });
 }
 
 /* ABOUT PAGE FOR MOBILE */
@@ -55,48 +54,39 @@ if (window.innerWidth < 1000) {
   });
 }
 
-/* CONTACT PAGE */
+/* SIDE MENU AND CONTACT */
 
-document.querySelector("#a_contact").addEventListener("click", openContact);
-
-function openContact() {
-  let contact_screen = document.querySelector(".contact_screen");
-  // FOR DESKTOP
-  if (window.innerWidth > 1000) {
-    contact_screen.classList.toggle("width0");
-    contact_screen.classList.toggle("extendInfos");
-    setTimeout(function() {
-      document.querySelector(".contact_text").classList.toggle("opacity");
-    }, 500);
-  }
-  // FOR MOBILE
-  if (window.innerWidth < 1000) {
-    contact_screen.classList.toggle("width0");
-    contact_screen.classList.toggle("extendMobileInfos");
-    setTimeout(function() {
-      document.querySelector(".contact_text").classList.toggle("opacity");
-    }, 500);
+function openSide(screen, content) {
+  extend(screen);
+  setTimeout(opacity, 500, content);
+  if (filterScreen) {
+    none(menuLinkFilters, menuLinkProjects);
   }
 }
 
-document.querySelector("#crossC").addEventListener("click", closeContact);
+function closeSide(screen, content) {
+  opacity(content);
+  setTimeout(extend, 500, screen);
+}
 
-function closeContact() {
-  let contact_screen = document.querySelector(".contact_screen");
+/* EFFECT FUNCTIONS */
+
+function none(element) {
+  element.classList.add(none);
+}
+
+function opacity(content) {
+  content.classList.toggle("opacity");
+}
+
+function extend(screen) {
   // FOR DESKTOP
   if (window.innerWidth > 1000) {
-    document.querySelector(".contact_text").classList.toggle("opacity");
-    setTimeout(function() {
-      contact_screen.classList.toggle("width0");
-      contact_screen.classList.toggle("extendInfos");
-    }, 500);
+    screen.classList.toggle("extend-side");
   }
   // FOR MOBILE
   if (window.innerWidth < 1000) {
-    document.querySelector(".contact_text").classList.toggle("opacity");
-    setTimeout(function() {
-      contact_screen.classList.toggle("width0");
-      contact_screen.classList.toggle("extendMobileInfos");
-    }, 500);
+    screen.classList.toggle("extendMobileInfos");
   }
+  screen.classList.toggle("width0");
 }

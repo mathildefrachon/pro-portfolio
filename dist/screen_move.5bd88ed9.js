@@ -111,9 +111,9 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 var screenWelcome = document.querySelector("#welcome-screen");
 var screenAbout = document.querySelector("#about-screen");
 var screenProject = document.querySelector("#project-screen");
-var aboutButton = document.querySelector("#a_about");
-var projectButton = document.querySelector("#a_projects");
-var imgArray = document.querySelectorAll(".imgwrapper");
+var aboutButton = document.querySelector("#a-about");
+var projectButton = document.querySelector("#a-projects"); // const imgArray = document.querySelectorAll(".imgwrapper");
+
 var right = "right";
 var left = "left";
 window.addEventListener("DOMContentLoaded", initScreen); //let urlParams = new URLSearchParams(window.location.search);
@@ -138,7 +138,7 @@ function initScreen() {
     // none(screenWelcome);
     // screenProject.style.left = "0";
 
-    var filter_link = document.querySelector("#a_filters");
+    var filter_link = document.querySelector("#a-filters");
     filter_link.classList.remove("none");
   }
 }
@@ -199,7 +199,7 @@ function checkScreen(e) {
     screenAbout.addEventListener("animationend", function () {
       if (screenAbout.classList.contains("here")) {
         none(screenWelcome, screenProject);
-        document.querySelector("#a_filters").classList.add("none");
+        document.querySelector("#a-filters").classList.add("none");
       }
     });
   } // IF WE CLICK ON PROJECT
@@ -228,7 +228,7 @@ function checkScreen(e) {
       screenProject.addEventListener("animationend", function () {
         if (screenProject.classList.contains("here")) {
           none(screenWelcome, screenAbout);
-          document.querySelector("#a_filters").classList.remove("none");
+          document.querySelector("#a-filters").classList.remove("none");
         }
       });
     }
@@ -260,7 +260,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60631" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51225" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);

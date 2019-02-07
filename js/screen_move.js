@@ -7,10 +7,10 @@ const screenWelcome = document.querySelector("#welcome-screen");
 const screenAbout = document.querySelector("#about-screen");
 const screenProject = document.querySelector("#project-screen");
 
-const aboutButton = document.querySelector("#a_about");
-const projectButton = document.querySelector("#a_projects");
+const aboutButton = document.querySelector("#a-about");
+const projectButton = document.querySelector("#a-projects");
 
-const imgArray = document.querySelectorAll(".imgwrapper");
+// const imgArray = document.querySelectorAll(".imgwrapper");
 
 const right = "right";
 const left = "left";
@@ -39,7 +39,7 @@ function initScreen() {
     // notHere(screenWelcome);
     // none(screenWelcome);
     // screenProject.style.left = "0";
-    const filter_link = document.querySelector("#a_filters");
+    const filter_link = document.querySelector("#a-filters");
     filter_link.classList.remove("none");
   }
 }
@@ -103,7 +103,7 @@ function checkScreen(e) {
     screenAbout.addEventListener("animationend", function() {
       if (screenAbout.classList.contains("here")) {
         none(screenWelcome, screenProject);
-        document.querySelector("#a_filters").classList.add("none");
+        document.querySelector("#a-filters").classList.add("none");
       }
     });
   }
@@ -138,7 +138,7 @@ function checkScreen(e) {
     screenProject.addEventListener("animationend", function() {
       if (screenProject.classList.contains("here")) {
         none(screenWelcome, screenAbout);
-        document.querySelector("#a_filters").classList.remove("none");
+        document.querySelector("#a-filters").classList.remove("none");
       }
     });
   }

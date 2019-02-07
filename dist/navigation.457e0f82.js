@@ -106,42 +106,37 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   return newRequire;
 })({"js/navigation.js":[function(require,module,exports) {
 "use strict";
-/* INFOS MENU */
 
-var menu_project = document.querySelector("#project_infos");
-var menu_text = document.querySelector("#menu_container");
+var contactScreen = document.querySelector("#contact-screen");
+var contactContent = document.querySelector(".contact-wrapper");
+var filterScreen = document.querySelector("#filter-screen");
+var filterContent = document.querySelector("#filter-wrapper"); // menu links
+
+var menuLinkProjects = document.querySelector("#a-projects");
+var menuLinkFilters = document.querySelector("#a-filters");
+var menuLinkContact = document.querySelector("#a-contact");
 window.addEventListener("DOMContentLoaded", initNav);
 
 function initNav() {
   //BUTTONS CATEGORIES
-  // document
-  //   .querySelectorAll(".cat_link")
-  //   .forEach(element => element.addEventListener("click", clickedFilter));
-  //CLICK ON A PROJECT
-  // gallery.addEventListener("click", clickedPost);
-  //MENU
-  document.querySelector("#a_filters").addEventListener("click", displayMenu);
-  document.querySelector("#crossP").addEventListener("click", displayMenu);
-}
+  document.querySelectorAll(".cat-link").forEach(function (element) {
+    return element.addEventListener("click", clickedFilter);
+  }); //CLICK ON A PROJECT
 
-function displayMenu() {
-  console.log("displayMenu");
+  gallery.addEventListener("click", clickedPost); //SIDE MENU
 
-  if (window.innerWidth > 414) {
-    menu_project.classList.toggle("width0");
-    menu_project.classList.toggle("extendInfos");
-    setTimeout(function () {
-      menu_text.classList.toggle("opacity");
-    }, 500);
-  } // FOR MOBILE
-  else {
-      console.log("display Menu Mobile");
-      menu_project.classList.toggle("width0");
-      menu_project.classList.toggle("extendMobileInfos");
-      setTimeout(function () {
-        menu_text.classList.toggle("opacity");
-      }, 500);
-    }
+  menuLinkFilters.addEventListener("click", function () {
+    openSide(filterScreen, filterContent);
+  });
+  document.querySelector("#cross-filter").addEventListener("click", function () {
+    closeSide(filterScreen, filterContent);
+  });
+  menuLinkContact.addEventListener("click", function () {
+    openSide(contactScreen, contactContent);
+  });
+  document.querySelector("#cross-contact").addEventListener("click", function () {
+    closeSide(contactScreen, contactContent);
+  });
 }
 /* ABOUT PAGE FOR MOBILE */
 
@@ -158,53 +153,45 @@ if (window.innerWidth < 1000) {
     slideD.classList.add("none");
   });
 }
-/* CONTACT PAGE */
+/* SIDE MENU AND CONTACT */
 
 
-document.querySelector("#a_contact").addEventListener("click", openContact);
+function openSide(screen, content) {
+  extend(screen);
+  setTimeout(opacity, 500, content);
 
-function openContact() {
-  var contact_screen = document.querySelector(".contact_screen"); // FOR DESKTOP
-
-  if (window.innerWidth > 1000) {
-    contact_screen.classList.toggle("width0");
-    contact_screen.classList.toggle("extendInfos");
-    setTimeout(function () {
-      document.querySelector(".contact_text").classList.toggle("opacity");
-    }, 500);
-  } // FOR MOBILE
-
-
-  if (window.innerWidth < 1000) {
-    contact_screen.classList.toggle("width0");
-    contact_screen.classList.toggle("extendMobileInfos");
-    setTimeout(function () {
-      document.querySelector(".contact_text").classList.toggle("opacity");
-    }, 500);
+  if (filterScreen) {
+    none(menuLinkFilters, menuLinkProjects);
   }
 }
 
-document.querySelector("#crossC").addEventListener("click", closeContact);
+function closeSide(screen, content) {
+  opacity(content);
+  setTimeout(extend, 500, screen);
+}
+/* EFFECT FUNCTIONS */
 
-function closeContact() {
-  var contact_screen = document.querySelector(".contact_screen"); // FOR DESKTOP
 
+function none(element) {
+  element.classList.add(none);
+}
+
+function opacity(content) {
+  content.classList.toggle("opacity");
+}
+
+function extend(screen) {
+  // FOR DESKTOP
   if (window.innerWidth > 1000) {
-    document.querySelector(".contact_text").classList.toggle("opacity");
-    setTimeout(function () {
-      contact_screen.classList.toggle("width0");
-      contact_screen.classList.toggle("extendInfos");
-    }, 500);
+    screen.classList.toggle("extend-side");
   } // FOR MOBILE
 
 
   if (window.innerWidth < 1000) {
-    document.querySelector(".contact_text").classList.toggle("opacity");
-    setTimeout(function () {
-      contact_screen.classList.toggle("width0");
-      contact_screen.classList.toggle("extendMobileInfos");
-    }, 500);
+    screen.classList.toggle("extendMobileInfos");
   }
+
+  screen.classList.toggle("width0");
 }
 },{}],"../../.npm-global/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
@@ -233,7 +220,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53797" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51315" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);

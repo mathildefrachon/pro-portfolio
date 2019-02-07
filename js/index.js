@@ -168,8 +168,9 @@ function clearList() {
 // SET ACTIVE FILTER NUMBER
 function clickedFilter(event) {
   console.log("clickedFilter");
+  console.log(this);
   const filter = this.dataset.filter;
-  console.log(filter);
+
   activeFilter = filter;
   event.preventDefault(); // PREVENT FROM GOIN BACK TO BEGINNING AFTER FILTERING
   currentArray = filterByCat(filter);

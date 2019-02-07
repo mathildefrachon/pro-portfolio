@@ -271,8 +271,8 @@ function clearList() {
 
 function clickedFilter(event) {
   console.log("clickedFilter");
+  console.log(this);
   var filter = this.dataset.filter;
-  console.log(filter);
   activeFilter = filter;
   event.preventDefault(); // PREVENT FROM GOIN BACK TO BEGINNING AFTER FILTERING
 
@@ -337,7 +337,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53797" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51225" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
