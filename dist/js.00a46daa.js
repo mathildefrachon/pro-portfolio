@@ -107,8 +107,15 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 })({"js/index.js":[function(require,module,exports) {
 "use strict";
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.clickedFilter = clickedFilter;
+exports.clickedPost = clickedPost;
+exports.urlParams = void 0;
 var json_link = "https://portfolio-backend.mathildefrachon.com/wp-json/wp/v2/projects?_embed&per_page=20";
 var urlParams = new URLSearchParams(window.location.search);
+exports.urlParams = urlParams;
 var gallery = document.querySelector("#gallery");
 window.addEventListener("DOMContentLoaded", init);
 /* THIS IS AFTER CLICKING ON A PROJECT / SUBPAGE */
@@ -255,7 +262,7 @@ function checkImgOrientation(downloadingImage, projectImg, projectWrap) {
 
 
 function displayImg(oneProject, projectImg, projectWrap, source, projectTitle) {
-  console.log(projectImg);
+  //console.log(projectImg);
   projectImg.setAttribute("src", source);
   projectTitle.innerHTML = oneProject.name;
   projectImg.dataset.projectId = oneProject.id;
@@ -337,7 +344,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60881" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55725" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);

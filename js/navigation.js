@@ -1,4 +1,5 @@
 "use strict";
+import { clickedFilter, clickedPost } from "./index.js";
 
 let contactScreen = document.querySelector("#contact-screen");
 let contactContent = document.querySelector(".contact-wrapper");
@@ -59,10 +60,6 @@ if (window.innerWidth < 1000) {
 function openSide(screen, content) {
   extend(screen);
   setTimeout(opacity, 500, content);
-  // if (filterScreen) {
-  //   console.log("open filter");
-  //   none(menuLinkFilters, menuLinkProjects);
-  // }
 }
 
 function closeSide(screen, content) {

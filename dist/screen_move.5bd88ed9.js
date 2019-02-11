@@ -104,10 +104,302 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 
   // Override the current require with this new one
   return newRequire;
-})({"js/screen_move.js":[function(require,module,exports) {
-"use strict"; // ANIMATION BETWEEN ABOUT AND PROJECT PAGE
-// THIS PAGE IS A MESS
+})({"js/index.js":[function(require,module,exports) {
+"use strict";
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.clickedFilter = clickedFilter;
+exports.clickedPost = clickedPost;
+exports.currentArray = exports.imgArray = exports.activeFilter = exports.cat = exports.urlParams = void 0;
+var urlParams = new URLSearchParams(window.location.search);
+exports.urlParams = urlParams;
+var cat = urlParams.get("category");
+exports.cat = cat;
+var activeFilter = cat;
+exports.activeFilter = activeFilter;
+var imgArray;
+exports.imgArray = imgArray;
+var currentArray = [];
+exports.currentArray = currentArray;
+var json_link = "https://portfolio-backend.mathildefrachon.com/wp-json/wp/v2/projects?_embed&per_page=20";
+var loader = document.querySelector(".loader");
+var imgVert = document.querySelector(".imgVert");
+var imgWrap = document.querySelector(".imgwrapper");
+var gallery = document.querySelector("#gallery");
+window.addEventListener("DOMContentLoaded", init);
+/* THIS IS AFTER CLICKING ON A PROJECT / SUBPAGE */
+
+if (cat) {
+  json_link = json_link + "&categories=" + cat;
+} // CREATE OBJECT PROJECT
+
+
+var objProject = {
+  name: "",
+  subtitle: "",
+  type: "",
+  description: "",
+  keywords: "",
+  image: "",
+  category: "",
+  relatedpost: {
+    title: "",
+    url: ""
+  },
+  otherimages: [],
+  id: null,
+  wpid: null
+};
+var project = "";
+var projectsArray = [];
+
+function init() {
+  // fetch JSON
+  fetch(json_link).then(function (e) {
+    return e.json();
+  }).then(function (data) {
+    return buildList(data);
+  });
+} // BUILD THE ARRAY OF PROJECTS
+
+
+function buildList(data) {
+  console.log(data);
+  data.forEach(function (dataProject) {
+    project = Object.create(objProject);
+    project.name = dataProject.title.rendered;
+    project.wpid = dataProject.id;
+    project.image = dataProject._embedded["wp:featuredmedia"][0].media_details.sizes.full.source_url;
+    project.subtitle = dataProject.acf.subtitle;
+    project.type = dataProject.acf.type;
+    project.description = dataProject.acf.description;
+    project.keywords = dataProject.acf.keywords;
+    project.otherimages = [{
+      url: dataProject._embedded["wp:featuredmedia"][0].media_details.sizes.full.source_url
+    }];
+    project.category = dataProject.categories;
+
+    for (var key in dataProject.acf) {
+      if (key.startsWith("other_images") && dataProject.acf[key]) {
+        project.otherimages.push(dataProject.acf[key]);
+      }
+    }
+
+    projectsArray.push(project);
+    project.id = projectsArray.indexOf(project);
+  });
+  exports.currentArray = currentArray = projectsArray;
+  displayArray(currentArray);
+} // DISPLAY THE ARRAY IN GALLERY AND IN SUBPAGE
+
+
+function displayArray(currentArray) {
+  var urlParams = new URLSearchParams(window.location.search);
+  var urlIndex = urlParams.get("index");
+
+  if (urlIndex === null) {
+    displayList(currentArray);
+    console.log("we are on gallery");
+  } else {
+    displayProject(currentArray);
+    console.log("we are on subpage");
+  }
+} // DISPLAY ARRAY IN THE GALLERY
+
+
+function displayList(listOfProjects) {
+  exports.currentArray = currentArray = listOfProjects; //CLEAR THE TABLE
+
+  clearList(); // CLONE FOR EACH PROJECT
+
+  cloneProject(listOfProjects);
+} //CLONE BY PROJECT AND APPEND
+
+
+function cloneProject(listOfProjects) {
+  listOfProjects.forEach(function (oneProject) {
+    var template = document.querySelector("#project-template").content;
+    var clone = template.cloneNode(true); // FILL IN THE CLONE
+
+    imgLoaded(clone, oneProject); // APPEND
+
+    gallery.appendChild(clone);
+  });
+} //WHEN IMG LOADED GIVE SRC AT PROJECT IMG + TAKE OUT LOADER
+
+
+function imgLoaded(clone, oneProject) {
+  var downloadingImage = new Image();
+  var loader = clone.querySelector(".loader");
+  var projectImg = clone.querySelector(".project-img");
+  var projectWrap = clone.querySelector(".project-wrapper");
+  var projectTitle = clone.querySelector("h2");
+
+  downloadingImage.onload = function () {
+    loader.classList.add("none");
+    projectWrap.classList.remove("width-load");
+    projectImg.classList.remove("none");
+    checkImgOrientation(downloadingImage, projectImg, projectWrap);
+  };
+
+  downloadingImage.src = oneProject.image;
+  var source = downloadingImage.src;
+  displayImg(oneProject, projectImg, projectWrap, source, projectTitle);
+} // GIVE PORTRAIT OR LANDSCAPE CLASS
+
+
+function checkImgOrientation(downloadingImage, projectImg, projectWrap) {
+  //   console.log(myProject);
+  if (downloadingImage.naturalWidth > downloadingImage.naturalHeight) {
+    console.log("landscape img");
+    projectImg.classList.remove("portrait");
+    projectImg.classList.add("landscape"); //for mobile
+
+    if (window.innerWidth < 1000) {
+      projectImg.style.marginBottom = "20%";
+      projectWrap.style.height = "30vh";
+    }
+  } else if (downloadingImage.naturalWidth < downloadingImage.naturalHeight) {
+    console.log("portrait img");
+    projectImg.classList.add("portrait");
+    projectImg.classList.remove("landscape");
+  }
+} // GIVE SOURCE TO projectImg IN HTML + TITLE + ID AND WPID TO EACH CLONE
+
+
+function displayImg(oneProject, projectImg, projectWrap, source, projectTitle) {
+  //console.log(projectImg);
+  projectImg.setAttribute("src", source);
+  projectTitle.innerHTML = oneProject.name;
+  projectImg.dataset.projectId = oneProject.id;
+  projectImg.dataset.wpid = oneProject.wpid;
+} // CLEAR THE ARRAY
+
+
+function clearList() {
+  gallery.innerHTML = "";
+} // ------------------- FILTER THE ARRAY ------------------------- //
+// let filterScreen = document.querySelector("#filter-screen");
+// let filterContent = document.querySelector("#filter-wrapper");
+// import closeSide from "./navigation.js";
+// SET ACTIVE FILTER NUMBER
+
+
+function clickedFilter(event) {
+  console.log("clickedFilter");
+  console.log(this);
+  var filter = this.dataset.filter;
+  exports.activeFilter = activeFilter = filter;
+  event.preventDefault(); // PREVENT FROM GOIN BACK TO BEGINNING AFTER FILTERING
+
+  exports.currentArray = currentArray = filterByCat(filter);
+  console.log(currentArray);
+  displayArray(currentArray, filter);
+  document.querySelector("#filter-wrapper").classList.toggle("opacity");
+  setTimeout(function () {
+    if (window.innerWidth > 1000) {
+      document.querySelector("#filter-screen").classList.toggle("extend-side");
+    } // FOR MOBILE
+
+
+    if (window.innerWidth < 1000) {
+      document.querySelector("#filter-screen").classList.toggle("extendMobileInfos");
+    }
+
+    document.querySelector("#filter-screen").classList.toggle("width0");
+  }, 500);
+} // FILTER THE ARRAY AND RETURN IT
+
+
+function filterByCat(filter) {
+  exports.currentArray = currentArray = projectsArray.filter(byCat);
+
+  function byCat(project) {
+    if (project.category.toString() === filter.toString()) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  return currentArray;
+} // SET URL SUBPAGE WITH WPID OF POST OR FILTER OF CATEGORY
+
+
+function clickedPost(event) {
+  var postClicked = event.target;
+  console.log(postClicked);
+  var index = postClicked.dataset.wpid;
+  console.log(index);
+  var url = "subpage.html?index=" + index;
+
+  if (activeFilter) {
+    url += "&category=" + activeFilter;
+  }
+
+  postClicked.parentElement.setAttribute("href", url);
+}
+/* ----------------- DISPLAY PROJECT SUBPAGE ---------------- */
+
+/* DISPLAY THE CLICKED PROJECT */
+
+
+function displayProject(currentArray) {
+  //FIND THE RIGHT PROJECT
+  var index = urlParams.get("index");
+  var myProject = currentArray.find(function (p) {
+    return p.wpid == index;
+  }); // DISPLAY IMAGES LANDSCAPE AND PORTRAIT
+
+  var downloadingImage = new Image();
+
+  downloadingImage.onload = function () {
+    console.log(downloadingImage);
+    console.log(myProject);
+    loader.classList.add("none");
+    checkImgOrientation(downloadingImage, imgVert, imgWrap);
+  };
+
+  downloadingImage.src = myProject.image; // DISPLAY INFOS
+
+  displayInfos(myProject); // DOTS IMG SLIDE
+
+  displayDots(myProject);
+  imgVert.setAttribute("src", myProject.image);
+  imgVert.classList.remove("none");
+}
+
+function displayInfos(myProject) {
+  console.log("infos projets");
+  console.log(myProject.description);
+  document.querySelector("h1").textContent = myProject.name;
+  document.querySelector(".postsubTitle").textContent = myProject.subtitle;
+  document.querySelector(".postType").textContent = myProject.type;
+  document.querySelector(".postDesc").textContent = myProject.description;
+  document.querySelector(".postKeywords").textContent = myProject.keywords;
+}
+
+function displayDots(myProject) {
+  exports.imgArray = imgArray = myProject.otherimages;
+  var dot_nav = document.querySelector("#dot_nav");
+  console.log("create dots");
+  imgArray.forEach(function (img) {
+    var dot = document.createElement("div");
+    dot.classList.add("point");
+    dot.id = "dot" + imgArray.indexOf(img);
+    dot_nav.appendChild(dot);
+  });
+  document.querySelector("#dot0").classList.add("dotActive");
+}
+},{}],"js/screen_move.js":[function(require,module,exports) {
+"use strict";
+
+var _index = require("./index.js");
+
+// ANIMATION BETWEEN ABOUT AND PROJECT PAGE
+// THIS PAGE IS A MESS
 var screenWelcome = document.querySelector("#welcome-screen");
 var screenAbout = document.querySelector("#about-screen");
 var screenProject = document.querySelector("#project-screen");
@@ -119,7 +411,8 @@ var left = "left";
 window.addEventListener("DOMContentLoaded", initScreen); //let urlParams = new URLSearchParams(window.location.search);
 
 function initScreen() {
-  var fromSubpage = urlParams.get("fromSubpage");
+  var fromSubpage = _index.urlParams.get("fromSubpage");
+
   aboutButton.addEventListener("click", function () {
     checkScreen(right);
   });
@@ -233,7 +526,7 @@ function checkScreen(e) {
       });
     }
 }
-},{}],"../../.npm-global/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./index.js":"js/index.js"}],"../../.npm-global/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -260,7 +553,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60881" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56808" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);

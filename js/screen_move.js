@@ -1,5 +1,5 @@
 "use strict";
-
+import { urlParams } from "./index.js";
 // ANIMATION BETWEEN ABOUT AND PROJECT PAGE
 // THIS PAGE IS A MESS
 
