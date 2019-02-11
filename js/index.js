@@ -120,6 +120,8 @@ function imgLoaded(clone, oneProject) {
 
   downloadingImage.onload = function() {
     loader.classList.add("none");
+    projectWrap.classList.remove("width-load");
+    projectImg.classList.remove("none");
     checkImgOrientation(downloadingImage, projectImg, projectWrap);
   };
   downloadingImage.src = oneProject.image;
@@ -151,8 +153,7 @@ function checkImgOrientation(downloadingImage, projectImg, projectWrap) {
 function displayImg(oneProject, projectImg, projectWrap, source, projectTitle) {
   console.log(projectImg);
   projectImg.setAttribute("src", source);
-  projectImg.classList.remove("none");
-  projectWrap.classList.remove("width-load");
+
   projectTitle.innerHTML = oneProject.name;
   projectImg.dataset.projectId = oneProject.id;
   projectImg.dataset.wpid = oneProject.wpid;

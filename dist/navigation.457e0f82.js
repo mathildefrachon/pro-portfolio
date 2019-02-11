@@ -141,8 +141,8 @@ function initNav() {
 /* ABOUT PAGE FOR MOBILE */
 
 
-var aboutSlidesM = document.querySelectorAll(".aboutSlidesM");
-var aboutSlidesD = document.querySelectorAll(".aboutSlidesD");
+var aboutSlidesM = document.querySelectorAll(".about-slides-mob");
+var aboutSlidesD = document.querySelectorAll(".about-slides-desk");
 
 if (window.innerWidth < 1000) {
   console.log("onMobile");
@@ -158,11 +158,10 @@ if (window.innerWidth < 1000) {
 
 function openSide(screen, content) {
   extend(screen);
-  setTimeout(opacity, 500, content);
-
-  if (filterScreen) {
-    none(menuLinkFilters, menuLinkProjects);
-  }
+  setTimeout(opacity, 500, content); // if (filterScreen) {
+  //   console.log("open filter");
+  //   none(menuLinkFilters, menuLinkProjects);
+  // }
 }
 
 function closeSide(screen, content) {

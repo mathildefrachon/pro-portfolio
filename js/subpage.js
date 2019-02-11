@@ -13,10 +13,10 @@ const images = document.querySelector(".images");
 // window.addEventListener("DOMContentLoaded", displayProject);
 
 /* DISPLAY THE CLICKED PROJECT */
+
 function displayProject(currentArray) {
   //FIND THE RIGHT PROJECT
   const myProject = currentArray.find(p => p.wpid == index);
-
   // DISPLAY IMAGES LANDSCAPE AND PORTRAIT
   let downloadingImage = new Image();
   downloadingImage.onload = function() {
@@ -27,14 +27,11 @@ function displayProject(currentArray) {
   };
 
   downloadingImage.src = myProject.image;
-
   // DISPLAY INFOS
   console.log("display infos");
   displayInfos(myProject);
-
   // DOTS IMG SLIDE
   displayDots(myProject);
-
   imgVert.setAttribute("src", myProject.image);
   imgVert.classList.remove("none");
 }
@@ -52,8 +49,8 @@ function displayInfos(myProject) {
 function displayDots(myProject) {
   let imgIndex = 0;
   let imgArray = myProject.otherimages;
-
   const dot_nav = document.querySelector("#dot_nav");
+  console.log("create dots");
 
   imgArray.forEach(img => {
     let dot = document.createElement("div");

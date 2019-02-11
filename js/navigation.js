@@ -40,8 +40,8 @@ function initNav() {
 
 /* ABOUT PAGE FOR MOBILE */
 
-let aboutSlidesM = document.querySelectorAll(".aboutSlidesM");
-let aboutSlidesD = document.querySelectorAll(".aboutSlidesD");
+let aboutSlidesM = document.querySelectorAll(".about-slides-mob");
+let aboutSlidesD = document.querySelectorAll(".about-slides-desk");
 
 if (window.innerWidth < 1000) {
   console.log("onMobile");
@@ -59,9 +59,10 @@ if (window.innerWidth < 1000) {
 function openSide(screen, content) {
   extend(screen);
   setTimeout(opacity, 500, content);
-  if (filterScreen) {
-    none(menuLinkFilters, menuLinkProjects);
-  }
+  // if (filterScreen) {
+  //   console.log("open filter");
+  //   none(menuLinkFilters, menuLinkProjects);
+  // }
 }
 
 function closeSide(screen, content) {
