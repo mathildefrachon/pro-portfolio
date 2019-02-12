@@ -187,7 +187,7 @@ ul {
   position: fixed;
   left: 0;
   z-index: 5;
-  padding: 2% 2%;
+  padding: 2% 0;
 }
 
 #top-nav {
@@ -201,23 +201,46 @@ ul {
 #top-nav a,
 #bottom-nav a {
   color: white;
-  transition: all ease 1s;
+  transition: all ease 0.4s;
+  width: 7%;
 }
 
 #a-projects,
 #a-filters {
   float: left;
+  text-align: end;
 }
 
 #a-about,
 #a-contact {
   float: right;
+  text-align: start;
+}
+
+#a-projects,
+#a-about {
+  padding-bottom: 0.5rem;
+}
+
+#a-filters,
+#a-contact {
+  padding-top: 0.5rem;
 }
 
 /* NAV ANIM */
 
 #menu a:hover {
-  border-bottom: solid white 2px;
+  font-size: 1.3rem;
+}
+
+#a-projects:hover,
+#a-about:hover {
+  border-bottom: solid 1.3px white;
+}
+
+#a-filters:hover,
+#a-contact:hover {
+  border-top: solid 1.3px white;
 }
 
 /* UNDER CONSTRUCTION */

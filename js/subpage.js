@@ -45,7 +45,7 @@ document.querySelector("#previous").addEventListener("click", previousProject);
 
 function nextProject() {
   console.log("next");
-
+  closeInfos();
   const thisIndex = currentArray.findIndex(pr => pr.wpid == index);
   console.log(thisIndex);
   let nextIndex = thisIndex + 1;
@@ -55,16 +55,27 @@ function nextProject() {
 
   if (cat) {
     console.log("we have a category:" + cat);
+
     let newUrl =
       "subpage.html?index=" +
       currentArray[nextIndex].wpid +
       "&category=" +
       activeFilter;
-    document.querySelector("#next").setAttribute("href", newUrl);
+    console.log(newUrl);
+
+    // document.querySelector("#next").setAttribute("href", newUrl);
   } else {
     let newUrl = "subpage.html?index=" + currentArray[nextIndex].wpid;
     document.querySelector("#next").setAttribute("href", newUrl);
   }
+
+  setTimeout(
+    function() {
+      document.querySelector("#next").setAttribute("href", newUrl);
+    },
+    500,
+    newUrl
+  );
 }
 
 function previousProject() {
