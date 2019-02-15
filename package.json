@@ -1,5 +1,5 @@
 {
-  "name": "portfolio",
+  "name": "sass",
   "version": "1.0.0",
   "description": "portfolio 2nd version with sass",
   "main": "index.js",
@@ -14,5 +14,13 @@
   "dependencies": {
     "gsap": "^2.0.2",
     "npm": "^6.7.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mathildefrachon/pro-portfolio.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mathildefrachon/pro-portfolio/issues"
+  },
+  "homepage": "https://github.com/mathildefrachon/pro-portfolio#readme"
 }

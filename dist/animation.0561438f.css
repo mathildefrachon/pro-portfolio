@@ -32,11 +32,21 @@
 
 .width0 {
   width: 0;
+  height: 100vh;
   padding: 0;
+  /* transition: all ease 1s; */
+}
+
+.width-load {
+  width: 45vw;
+  height: 70vh;
+  margin: 0 2vw;
 }
 
 .extend-side {
-  width: 33%;
+  width: 33vw;
+  height: 100vh;
+  /* transition: all ease 1s; */
 }
 
 .extendMobileInfos {
@@ -53,7 +63,7 @@
 
 .opacity {
   opacity: 0;
-  /* transition:all ease 1s; */
+  /* transition: all ease 1s; */
 }
 
 .dotActive {

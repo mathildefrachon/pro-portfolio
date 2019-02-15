@@ -112,7 +112,12 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.clickedFilter = clickedFilter;
 exports.clickedPost = clickedPost;
-exports.currentArray = exports.imgArray = exports.activeFilter = exports.cat = exports.urlParams = void 0;
+exports.openSide = openSide;
+exports.closeSide = closeSide;
+exports.none = none;
+exports.opacity = opacity;
+exports.extend = extend;
+exports.filterContent = exports.filterScreen = exports.currentArray = exports.imgArray = exports.activeFilter = exports.cat = exports.urlParams = void 0;
 var urlParams = new URLSearchParams(window.location.search);
 exports.urlParams = urlParams;
 var cat = urlParams.get("category");
@@ -123,6 +128,10 @@ var imgArray;
 exports.imgArray = imgArray;
 var currentArray = [];
 exports.currentArray = currentArray;
+var filterScreen = document.querySelector(".screen__side__filter");
+exports.filterScreen = filterScreen;
+var filterContent = document.querySelector(".screen__side--wrapper__filter");
+exports.filterContent = filterContent;
 var json_link = "https://portfolio-backend.mathildefrachon.com/wp-json/wp/v2/projects?_embed&per_page=20";
 var loader = document.querySelector(".loader");
 var imgVert = document.querySelector(".imgVert");
@@ -133,7 +142,7 @@ window.addEventListener("DOMContentLoaded", init);
 
 if (cat) {
   json_link = json_link + "&categories=" + cat;
-} // CREATE OBJECT PROJECT
+} //---------------- CREATE OBJECT PROJECT -------------------//
 
 
 var objProject = {
@@ -280,10 +289,7 @@ function displayImg(oneProject, projectImg, projectWrap, source, projectTitle) {
 
 function clearList() {
   gallery.innerHTML = "";
-} // ------------------- FILTER THE ARRAY ------------------------- //
-// let filterScreen = document.querySelector("#filter-screen");
-// let filterContent = document.querySelector("#filter-wrapper");
-// import closeSide from "./navigation.js";
+} // ------------------- FILTER THE ARRAY --------------------- //
 // SET ACTIVE FILTER NUMBER
 
 
@@ -297,19 +303,7 @@ function clickedFilter(event) {
   exports.currentArray = currentArray = filterByCat(filter);
   console.log(currentArray);
   displayArray(currentArray, filter);
-  document.querySelector("#filter-wrapper").classList.toggle("opacity");
-  setTimeout(function () {
-    if (window.innerWidth > 1000) {
-      document.querySelector("#filter-screen").classList.toggle("extend-side");
-    } // FOR MOBILE
-
-
-    if (window.innerWidth < 1000) {
-      document.querySelector("#filter-screen").classList.toggle("extendMobileInfos");
-    }
-
-    document.querySelector("#filter-screen").classList.toggle("width0");
-  }, 500);
+  closeSide(filterScreen, filterContent);
 } // FILTER THE ARRAY AND RETURN IT
 
 
@@ -393,15 +387,52 @@ function displayDots(myProject) {
   });
   document.querySelector("#dot0").classList.add("dotActive");
 }
+/* ------------------  SIDE MENU AND CONTACT  ---------------- */
+
+
+function openSide(screen, content) {
+  extend(screen);
+  setTimeout(opacity, 1000, content);
+}
+
+function closeSide(screen, content) {
+  opacity(content);
+  setTimeout(extend, 1000, screen);
+}
+/* ---------------------- EFFECT FUNCTIONS ------------------- */
+
+
+function none(element) {
+  element.classList.add(none);
+}
+
+function opacity(content) {
+  console.log("text disappear");
+  content.classList.toggle("opacity");
+}
+
+function extend(screen) {
+  // FOR DESKTOP
+  if (window.innerWidth > 1000) {
+    console.log("div disappear");
+    screen.classList.toggle("extend-side");
+    screen.classList.toggle("width0");
+  } // FOR MOBILE
+
+
+  if (window.innerWidth < 1000) {
+    screen.classList.toggle("extendMobileInfos");
+  }
+
+  screen.classList.toggle("width0");
+}
 },{}],"js/navigation.js":[function(require,module,exports) {
 "use strict";
 
 var _index = require("./index.js");
 
-var contactScreen = document.querySelector("#contact-screen");
-var contactContent = document.querySelector(".contact-wrapper");
-var filterScreen = document.querySelector("#filter-screen");
-var filterContent = document.querySelector("#filter-wrapper"); // menu links
+var contactScreen = document.querySelector(".screen__side__contact");
+var contactContent = document.querySelector(".screen__side--wrapper__contact"); // menu links
 
 var menuLinkProjects = document.querySelector("#a-projects");
 var menuLinkFilters = document.querySelector("#a-filters");
@@ -417,16 +448,17 @@ function initNav() {
   gallery.addEventListener("click", _index.clickedPost); //SIDE MENU
 
   menuLinkFilters.addEventListener("click", function () {
-    openSide(filterScreen, filterContent);
+    (0, _index.openSide)(_index.filterScreen, _index.filterContent);
   });
-  document.querySelector("#cross-filter").addEventListener("click", function () {
-    closeSide(filterScreen, filterContent);
-  });
+  document.querySelector(".buttons--cross__filter").addEventListener("click", function () {
+    (0, _index.closeSide)(_index.filterScreen, _index.filterContent);
+  }); // CONTACT
+
   menuLinkContact.addEventListener("click", function () {
-    openSide(contactScreen, contactContent);
+    (0, _index.openSide)(contactScreen, contactContent);
   });
-  document.querySelector("#cross-contact").addEventListener("click", function () {
-    closeSide(contactScreen, contactContent);
+  document.querySelector(".buttons--cross__contact").addEventListener("click", function () {
+    (0, _index.closeSide)(contactScreen, contactContent);
   });
 }
 /* ABOUT PAGE FOR MOBILE */
@@ -443,42 +475,6 @@ if (window.innerWidth < 1000) {
   aboutSlidesD.forEach(function (slideD) {
     slideD.classList.add("none");
   });
-}
-/* SIDE MENU AND CONTACT */
-
-
-function openSide(screen, content) {
-  extend(screen);
-  setTimeout(opacity, 500, content);
-}
-
-function closeSide(screen, content) {
-  opacity(content);
-  setTimeout(extend, 500, screen);
-}
-/* EFFECT FUNCTIONS */
-
-
-function none(element) {
-  element.classList.add(none);
-}
-
-function opacity(content) {
-  content.classList.toggle("opacity");
-}
-
-function extend(screen) {
-  // FOR DESKTOP
-  if (window.innerWidth > 1000) {
-    screen.classList.toggle("extend-side");
-  } // FOR MOBILE
-
-
-  if (window.innerWidth < 1000) {
-    screen.classList.toggle("extendMobileInfos");
-  }
-
-  screen.classList.toggle("width0");
 }
 },{"./index.js":"js/index.js"}],"../../.npm-global/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
@@ -507,7 +503,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56808" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53466" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);

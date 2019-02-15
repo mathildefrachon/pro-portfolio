@@ -1,0 +1,163 @@
+* {
+  font-family: Advent Pro, serif;
+  box-sizing: border-box;
+  margin: 0;
+}
+
+:root {
+  font-size: 62.5%;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* -------------GENERAL STYLE SHEET----------------- */
+
+/* FONT SIZE */
+
+$font-xl: 2.4rem;
+$font-large: 2.1rem;
+$font-normal: 1.8rem;
+$font-small: 1.5rem;
+$font-xs: 1.2rem;
+
+////////////////////////////////////
+
+/* COLORS */
+
+// screens
+$dark-green: rgb(11, 68, 63);
+$mint-green: rgb(154, 226, 214);
+$kaki-green: rgb(106, 151, 147);
+
+// filter menu
+$med-green-2: rgb(109, 204, 194);
+$med-green-1: rgb(74, 165, 154); /*darker*/
+
+// infos
+$black-green: rgb(8, 47, 43);
+
+// effects
+$shadow-green: $black-green;
+
+////////////////////////////////////////
+
+/* STYLE ELEMENTS */
+
+$box-shadow: 2px 3px 23px -4px $shadow-green;
+$border: white 3px solid;
+$text-shadow: 1px 1px 4px rgba(114, 146, 127, 0.822);
+
+////////////////////////////////////////
+
+/* EFFECT TRANSITIONS */
+
+$transition-normal: all ease 1s;
+$transition-forward: all ease 1s forwards;
+$transition-fast: all ease 0.3s;
+$transition-slow: all ease 2s;
+
+//////////////////////////////////////////////
+
+/* ------------- MIXINS STYLE----------------- */
+
+@mixin links($size, $color) {
+  color: $color;
+  font-size: $size;
+  @extend a;
+}
+
+@mixin text($size, $color) {
+  color: $color;
+  font-size: $size;
+  font-family: Khand;
+  letter-spacing: 0.3rem;
+}
+
+@mixin title($size, $color) {
+  color: $color;
+  font-size: $size;
+  letter-spacing: 0.8rem;
+  font-weight: 700;
+}
+
+@mixin liste($size, $color) {
+  color: $color;
+  font-size: $size;
+  letter-spacing: 0.4rem;
+  font-weight: 400;
+}
+
+/* -------------- MIXINS FUNCTIONS ------------------- */
+
+@mixin centered {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+@mixin size($width, $height) {
+  width: $width;
+  height: $height;
+}
+
+@mixin blackground-image($url, $color) {
+  background: url($url), $color;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+@mixin scroll-div($x, $y, $width, $height) {
+  width: $width;
+  height: $height;
+  overflow-x: $x;
+  overflow-y: $y;
+  white-space: nowrap;
+  scroll-behavior: smooth;
+}
+
+// Z-INDEXES
+
+$z-layers: (
+  default: 1,
+  menu: 5,
+  overlay: 10,
+  sides: 15,
+  modal: 40
+);
+
+// _functions.scss
+@function z($key) {
+  @if map-has-key($z-layers, $key) {
+    @return map-get($z-layers, $key);
+  }
+
+  @warn "Unknown `#{$key}` in $z-layers.";
+  @return null;
+}
+
+/* -------------- MIXINS RESPONSIVENESS ------------------- */
+
+$breakpoints: (
+  small: 767px,
+  medium: 992px,
+  large: 1200px
+);
+
+@mixin respond-to($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media (min-width: #{map-get($breakpoints, $breakpoint)}) {
+      @content;
+    }
+  } @else {
+    @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "
+          + "Please make sure it is defined in `$breakpoints` map.";
+  }
+}

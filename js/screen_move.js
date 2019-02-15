@@ -3,9 +3,9 @@ import { urlParams } from "./index.js";
 // ANIMATION BETWEEN ABOUT AND PROJECT PAGE
 // THIS PAGE IS A MESS
 
-const screenWelcome = document.querySelector("#welcome-screen");
-const screenAbout = document.querySelector("#about-screen");
-const screenProject = document.querySelector("#project-screen");
+const screenWelcome = document.querySelector(".screen__welcome");
+const screenAbout = document.querySelector(".screen__about");
+const screenProject = document.querySelector(".screen__gallery");
 
 const aboutButton = document.querySelector("#a-about");
 const projectButton = document.querySelector("#a-projects");

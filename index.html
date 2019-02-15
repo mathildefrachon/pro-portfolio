@@ -6,11 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>M A T H I L D E F R A C H O N</title>
-    <link rel="stylesheet" href="css/main.css">
+    <!-- <link rel="stylesheet" href="css/main.css"> -->
     <link rel="stylesheet" href="css/animation.css">
-    <link rel="stylesheet" href="css/menu_projects.css">
+    <!-- <link rel="stylesheet" href="css/menu_projects.css"> -->
     <link rel="stylesheet" href="css/about.css">
     <link rel="stylesheet" href="css/mobile.css">
+    <link rel="stylesheet" href="css/style.scss">
     <link href="https://fonts.googleapis.com/css?family=Advent+Pro:100,300,400,500,600,700">
     <link href="https://fonts.googleapis.com/css?family=Khand:300,400,500,600,700">
     
@@ -20,38 +21,38 @@
     
     <!-- ------ CONTACT PAGE -------- -->
 
-    <div id="contact-screen" class="width0">
-        <div class="contact-wrapper opacity">
+    <div class="screen__side screen__side__contact width0">
+        <div class="screen__side--wrapper screen__side--wrapper__contact opacity">
 
-            <a href="javascript:void(0)" class="buttons" id="cross-contact"><img class="icons" src="img/cross.png" alt="cross"></a>
+            <a href="javascript:void(0)" class="buttons buttons--cross buttons--cross__contact"><img class="icons--img" src="img/cross.png" alt="cross"></a>
 
             <h1> CONTACT ME:</h1>
 
             <!-- --- CONTACT FORM --- -->
-            <form id="contact-form" action="mailto:mathildefrachon.pro@gmail.com" method="post" enctype="text/plain">
-                <input placeholder="YOUR NAME..." type="text" name="name">
+            <form class="form" action="mailto:mathildefrachon.pro@gmail.com" method="post" enctype="text/plain">
+                <input class="form--input form--input__name" placeholder="YOUR NAME..." type="text" name="name">
                
-                <input placeholder="YOUR EMAIL..." type="text" name="mail">
+                <input class="form--input form--input__mail" placeholder="YOUR EMAIL..." type="text" name="mail">
               
-                <input placeholder="YOUR MESSAGE..." type="text" name="comment">
+                <input class="form--input form--input__msg" placeholder="YOUR MESSAGE..." type="text" name="comment">
              
-                <div class="submit-row">
-                <input type="submit" value="SEND">
-                <input type="reset" value="RESET">
+                <div class="form--submit">
+                <input class="form--input form--submit__send" type="submit" value="SEND">
+                <input class="form--input form--submit__reset"type="reset" value="RESET">
                 </div>
             </form>
 
             <!-- --- ADDRESS --- -->
-            <div class="adress-container">
+            <div class="address">
                 <img src="img/about/logo_footer.png" class="logo" alt="logo">
-                <p class="adress">Mathilde Frachon<br>Nordre Teglkaj 18<br>2450 København<br>50 26 22 95</p>
+                <p class="address--p">Mathilde Frachon<br>Nordre Teglkaj 18<br>2450 København<br>50 26 22 95</p>
                 <!-- --- SOME --- -->
-            <div class="icons-container">
-                <a class="buttons" href="https://www.facebook.com/mathilde.frachon"><img src="img/about/icons/icons-contact-34.png"
-                        class="icons"></a>
-                <a class="buttons" href="https://www.linkedin.com/in/mathilde-frachon-001a08101/"><img src="img/about/icons/icons-contact-31.png"
-                        class="icons"></a>
-                <a class="buttons" href=""><img src="img/about/icons/icons-contact-32.png" class="icons"></a>
+            <div class="address--icons">
+                <a class="buttons address--icons__fb-link" href="https://www.facebook.com/mathilde.frachon"><img src="img/about/icons/icons-contact-34.png"
+                        class="icons--img"></a>
+                <a class="buttons address--icons__lkdn-link" href="https://www.linkedin.com/in/mathilde-frachon-001a08101/"><img src="img/about/icons/icons-contact-31.png"
+                        class="icons--img"></a>
+                <a class="buttons address--icons__cv-link" href=""><img src="img/about/icons/icons-contact-32.png" class="icons--img"></a>
             </div>
             </div>
 
@@ -64,7 +65,7 @@
 
     <!-- ------ ABOUT PAGE -------- -->
 
-    <div id="about-screen" class="none screen">
+    <div  class="none screen screen__about">
 
         <div id="about-wrapper">
 
@@ -290,27 +291,26 @@
     <!--END OF ABOUT-->
 
 
-
-    <div id="filter-screen" class="width0">
-        <a href="#" class="buttons" id="cross-filter"><img class="icons" src="img/cross.png"></a>
-        <div id="filter-wrapper" class="opacity">
-            <div class="cat-link-wrapper">
-                <a href="#" data-filter="2" id="link-frontend" class="cat-link" > <h1>FRONTEND DESIGN</h1> </a>
-                <a href="#" data-filter="3" id="link-digital" class="cat-link"> <h1>DIGITAL DESIGN</h1> </a>
-                <a href="#" data-filter="4" id="link-print" class="cat-link" > <h1>PRINT DESIGN</h1> </a>
-                <a href="#" data-filter="5" id="link-visualID" class="cat-link" > <h1>VISUAL IDENTITY</h1> </a>
-                <a href="#" data-filter="11" id="link-videos" class="cat-link" > <h1>VIDEOS</h1> </a>
+    <div class="screen__side screen__side__filter width0">
+        <a href="#" class="buttons buttons--cross buttons--cross__filter"><img class="icons--img" src="img/cross.png"></a>
+        <div class="screen__side--wrapper screen__side--wrapper__filter opacity">
+            <div class="wrapper-cat">
+                <a href="#" data-filter="2" class="wrapper-cat__link cat__link--frontend" > <h1>FRONTEND DESIGN</h1> </a>
+                <a href="#" data-filter="3" class="wrapper-cat__link cat__link--digital" > <h1>DIGITAL DESIGN</h1> </a>
+                <a href="#" data-filter="4" class="wrapper-cat__link cat__link--print" > <h1>PRINT DESIGN</h1> </a>
+                <a href="#" data-filter="5" class="wrapper-cat__link cat__link--visualID" > <h1>VISUAL IDENTITY</h1> </a>
+                <a href="#" data-filter="11" id="link-videos" class="wrapper-cat__link cat__link--videos" > <h1>VIDEOS</h1> </a>
             </div>
-            <p class="cat-desc">Conception of all elements that can be associated to a brand (logotype, colors, font, style...) and that provides an effective recognition to the user. </p>
+            <p class="wrapper-cat__desc">Conception of all elements that can be associated to a brand (logotype, colors, font, style...) and that provides an effective recognition to the user. </p>
 
-            <h3 class="cat-keywords">LOGOTYPES / LOGOMARK / DESIGN GUIDELINES</h3>
-            <div class="cat-projects-wrapper">
+            <h3 class="wrapper-cat__keywords">LOGOTYPES / LOGOMARK / DESIGN GUIDELINES</h3>
+            <div class="wrapper-cat__projects">
                 <ul>
-                    <li> <a href="javascript:void(0)" class="cat-project-link"><h3>CONSTELLATION MOBILIS</h3></a> </li>
-                    <li><a href="javascript:void(0)" class="cat-project-link"><h3>MATHILDE FRACHON</h3></a></li>
-                    <li><a href="javascript:void(0)" class="cat-project-link"><h3>BUMBLE & BABY</h3></a></li>
-                    <li><a href="javascript:void(0)" class="cat-project-link"><h3>SNOOPERTROOPS</h3></a></li>
-                    <li><a href="javascript:void(0)" class="cat-project-link"><h3>MA POULE</h3></a></li>
+                    <li> <a href="javascript:void(0)"class="wrapper-cat__projects--link"><h3>CONSTELLATION MOBILIS</h3></a> </li>
+                    <li><a href="javascript:void(0)" class="wrapper-cat__projects--link"><h3>MATHILDE FRACHON</h3></a></li>
+                    <li><a href="javascript:void(0)" class="wrapper-cat__projects--link"><h3>BUMBLE & BABY</h3></a></li>
+                    <li><a href="javascript:void(0)" class="wrapper-cat__projects--link"><h3>SNOOPERTROOPS</h3></a></li>
+                    <li><a href="javascript:void(0)" class="wrapper-cat__projects--link"><h3>MA POULE</h3></a></li>
                 </ul>
             </div>
         </div>
@@ -318,9 +318,10 @@
 
 
 
+
     <!-- PROJECT PAGE DESKTOP -->
 
-    <div id="project-screen" class="none screen">
+    <div  class="none screen screen__gallery">
 
 
 
@@ -334,7 +335,7 @@
 
 
 
-    <div id="welcome-screen" class="here screen">
+    <div  class="here screen screen__welcome">
 
         <!-- <img src="img/background_site_light.jpg " id="marble " alt="background_marble "> -->
 
@@ -350,17 +351,17 @@
 
 
 
-    <div id="menu">
-        <nav id="top-nav">
-            <a href="#" id="a-projects">PROJECTS</a>
-            <a href="#" id="a-about">ABOUT</a>
+   
+        <nav class="c-menu c-menu--top">
+            <a class="c-menu__link c-menu--top__link c-menu__link--left" href="#" id="a-projects">PROJECTS</a>
+            <a class="c-menu__link c-menu--top__link c-menu__link--right" href="#" id="a-about">ABOUT</a>
         </nav>
 
-        <nav id="bottom-nav">
-            <a href="#" id="a-filters" class="none">FILTER</a>
-            <a href="javascript:void(0)" id="a-contact">CONTACT</a>
+        <nav class="c-menu c-menu--bottom">
+            <a  class="c-menu__link c-menu--bottom__link c-menu__link--left" href="#" id="a-filters" class="none">FILTER</a>
+            <a class="c-menu__link c-menu--bottom__link c-menu__link--right" href="javascript:void(0)" id="a-contact">CONTACT</a>
         </nav>
-    </div>
+ 
 
     <template id="project-template">
        

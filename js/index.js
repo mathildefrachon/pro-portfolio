@@ -5,6 +5,10 @@ export let cat = urlParams.get("category");
 export let activeFilter = cat;
 export let imgArray;
 export let currentArray = [];
+export let filterScreen = document.querySelector(".screen__side__filter");
+export let filterContent = document.querySelector(
+  ".screen__side--wrapper__filter"
+);
 
 let json_link =
   "https://portfolio-backend.mathildefrachon.com/wp-json/wp/v2/projects?_embed&per_page=20";
@@ -22,7 +26,7 @@ if (cat) {
   json_link = json_link + "&categories=" + cat;
 }
 
-// CREATE OBJECT PROJECT
+//---------------- CREATE OBJECT PROJECT -------------------//
 
 const objProject = {
   name: "",
@@ -174,10 +178,7 @@ function clearList() {
   gallery.innerHTML = "";
 }
 
-// ------------------- FILTER THE ARRAY ------------------------- //
-// let filterScreen = document.querySelector("#filter-screen");
-// let filterContent = document.querySelector("#filter-wrapper");
-// import closeSide from "./navigation.js";
+// ------------------- FILTER THE ARRAY --------------------- //
 
 // SET ACTIVE FILTER NUMBER
 export function clickedFilter(event) {
@@ -190,19 +191,7 @@ export function clickedFilter(event) {
   currentArray = filterByCat(filter);
   console.log(currentArray);
   displayArray(currentArray, filter);
-  document.querySelector("#filter-wrapper").classList.toggle("opacity");
-  setTimeout(function() {
-    if (window.innerWidth > 1000) {
-      document.querySelector("#filter-screen").classList.toggle("extend-side");
-    }
-    // FOR MOBILE
-    if (window.innerWidth < 1000) {
-      document
-        .querySelector("#filter-screen")
-        .classList.toggle("extendMobileInfos");
-    }
-    document.querySelector("#filter-screen").classList.toggle("width0");
-  }, 500);
+  closeSide(filterScreen, filterContent);
 }
 
 // FILTER THE ARRAY AND RETURN IT
@@ -280,4 +269,41 @@ function displayDots(myProject) {
     dot_nav.appendChild(dot);
   });
   document.querySelector("#dot0").classList.add("dotActive");
+}
+
+/* ------------------  SIDE MENU AND CONTACT  ---------------- */
+
+export function openSide(screen, content) {
+  extend(screen);
+  setTimeout(opacity, 1000, content);
+}
+
+export function closeSide(screen, content) {
+  opacity(content);
+  setTimeout(extend, 1000, screen);
+}
+
+/* ---------------------- EFFECT FUNCTIONS ------------------- */
+
+export function none(element) {
+  element.classList.add(none);
+}
+
+export function opacity(content) {
+  console.log("text disappear");
+  content.classList.toggle("opacity");
+}
+
+export function extend(screen) {
+  // FOR DESKTOP
+  if (window.innerWidth > 1000) {
+    console.log("div disappear");
+    screen.classList.toggle("extend-side");
+    screen.classList.toggle("width0");
+  }
+  // FOR MOBILE
+  if (window.innerWidth < 1000) {
+    screen.classList.toggle("extendMobileInfos");
+  }
+  screen.classList.toggle("width0");
 }

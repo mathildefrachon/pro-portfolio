@@ -1,11 +1,18 @@
 "use strict";
-import { clickedFilter, clickedPost } from "./index.js";
+import {
+  clickedFilter,
+  clickedPost,
+  openSide,
+  closeSide,
+  filterScreen,
+  filterContent,
+  extend,
+  opacity,
+  none
+} from "./index.js";
 
-let contactScreen = document.querySelector("#contact-screen");
-let contactContent = document.querySelector(".contact-wrapper");
-
-let filterScreen = document.querySelector("#filter-screen");
-let filterContent = document.querySelector("#filter-wrapper");
+let contactScreen = document.querySelector(".screen__side__contact");
+let contactContent = document.querySelector(".screen__side--wrapper__contact");
 
 // menu links
 
@@ -26,14 +33,17 @@ function initNav() {
   menuLinkFilters.addEventListener("click", function() {
     openSide(filterScreen, filterContent);
   });
-  document.querySelector("#cross-filter").addEventListener("click", function() {
-    closeSide(filterScreen, filterContent);
-  });
+  document
+    .querySelector(".buttons--cross__filter")
+    .addEventListener("click", function() {
+      closeSide(filterScreen, filterContent);
+    });
+  // CONTACT
   menuLinkContact.addEventListener("click", function() {
     openSide(contactScreen, contactContent);
   });
   document
-    .querySelector("#cross-contact")
+    .querySelector(".buttons--cross__contact")
     .addEventListener("click", function() {
       closeSide(contactScreen, contactContent);
     });
@@ -53,38 +63,4 @@ if (window.innerWidth < 1000) {
   aboutSlidesD.forEach(slideD => {
     slideD.classList.add("none");
   });
-}
-
-/* SIDE MENU AND CONTACT */
-
-function openSide(screen, content) {
-  extend(screen);
-  setTimeout(opacity, 500, content);
-}
-
-function closeSide(screen, content) {
-  opacity(content);
-  setTimeout(extend, 500, screen);
-}
-
-/* EFFECT FUNCTIONS */
-
-function none(element) {
-  element.classList.add(none);
-}
-
-function opacity(content) {
-  content.classList.toggle("opacity");
-}
-
-function extend(screen) {
-  // FOR DESKTOP
-  if (window.innerWidth > 1000) {
-    screen.classList.toggle("extend-side");
-  }
-  // FOR MOBILE
-  if (window.innerWidth < 1000) {
-    screen.classList.toggle("extendMobileInfos");
-  }
-  screen.classList.toggle("width0");
 }

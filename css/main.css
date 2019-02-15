@@ -24,11 +24,11 @@ a {
   letter-spacing: 0.5rem;
 }
 
-h1,
+/* h1,
 h2,
 h3 {
   line-height: normal;
-}
+} */
 
 p {
   font-size: 1.8rem;
@@ -219,12 +219,12 @@ ul {
 
 #a-projects,
 #a-about {
-  padding-bottom: 0.5rem;
+  padding-top: 0.5rem;
 }
 
 #a-filters,
 #a-contact {
-  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
 }
 
 /* NAV ANIM */
