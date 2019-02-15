@@ -103,6 +103,16 @@ $transition-slow: all ease 2s;
   margin: auto;
 }
 
+@mixin vertical-align($element) {
+  position: relative;
+  #{$element} {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+
 @mixin size($width, $height) {
   width: $width;
   height: $height;
