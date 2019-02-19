@@ -82,11 +82,14 @@ function nextProject() {
   );
 }
 
+let prevNewUrl = "";
+
 function previousProject() {
   console.log("previous");
-  closeInfos();
+
   const thisIndex = currentArray.findIndex(pr => pr.wpid == index);
   let nextIndex = thisIndex - 1;
+  console.log(nextIndex);
   // RETURN AT THE BEGINNING
   if (nextIndex < 0) {
     nextIndex = currentArray.length - 1;
@@ -94,25 +97,29 @@ function previousProject() {
   // IF CAT THEN NEXT WITHIN CAT
   if (cat) {
     console.log("we have a category:" + cat);
-    let newUrl =
+    prevNewUrl =
       "subpage.html?index=" +
       currentArray[nextIndex].wpid +
       "&category=" +
       activeFilter;
-    console.log(newUrl);
+    console.log(prevNewUrl);
   } else {
-    let newUrl = "subpage.html?index=" + currentArray[nextIndex].wpid;
-    document.querySelector(".buttons--sub__next").setAttribute("href", newUrl);
+    prevNewUrl = "subpage.html?index=" + currentArray[nextIndex].wpid;
+    console.log(prevNewUrl);
+    document
+      .querySelector(".buttons--sub__next")
+      .setAttribute("href", prevNewUrl);
   }
+  //closeInfos();
   // GIVES NEW URL AFTER A BIT
   setTimeout(
     function() {
       document
         .querySelector(".buttons--sub__next")
-        .setAttribute("href", newUrl);
+        .setAttribute("href", prevNewUrl);
     },
     500,
-    newUrl
+    prevNewUrl
   );
 }
 

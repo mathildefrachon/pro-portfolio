@@ -11,19 +11,22 @@ a {
 }
 
 h1 {
-  @include title($font-large, white);
+  @include title($font-large, white, $line-large);
 }
 
 h2 {
-  @include title($font-normal, white);
+  @include title($font-normal, white, $line-normal);
 }
 
 h3 {
-  @include title($font-small, white);
+  @include title($font-small, white, $line-small);
 }
 
 p {
   @include text($font-normal, white);
+  @include for-phone-only {
+    @include text($font-small, white);
+  }
 }
 
 ul {

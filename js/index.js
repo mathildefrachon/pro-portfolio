@@ -218,7 +218,8 @@ export function clickedPost(event) {
   if (activeFilter) {
     url += "&category=" + activeFilter;
   }
-  postClicked.parentElement.setAttribute("href", url);
+  window.location = url;
+  //postClicked.parentElement.setAttribute("href", url);
 }
 
 /* ----------------- DISPLAY PROJECT SUBPAGE ---------------- */

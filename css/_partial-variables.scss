@@ -25,6 +25,13 @@ $font-normal: 1.8rem;
 $font-small: 1.5rem;
 $font-xs: 1.2rem;
 
+/* LINE HEIGHT */
+$line-xl: 3.5rem;
+$line-large: 3rem;
+$line-normal: normal;
+$line-small: 2rem;
+$line-xs: 1rem;
+
 ////////////////////////////////////
 
 /* COLORS */
@@ -78,11 +85,12 @@ $transition-slow: all ease 2s;
   letter-spacing: 0.3rem;
 }
 
-@mixin title($size, $color) {
+@mixin title($size, $color, $line-height) {
   color: $color;
   font-size: $size;
   letter-spacing: 0.8rem;
   font-weight: 700;
+  line-height: $line-height;
 }
 
 @mixin liste($size, $color) {
@@ -155,19 +163,43 @@ $z-layers: (
 
 /* -------------- MIXINS RESPONSIVENESS ------------------- */
 
-$breakpoints: (
-  small: 767px,
-  medium: 992px,
-  large: 1200px
-);
-
-@mixin respond-to($breakpoint) {
-  @if map-has-key($breakpoints, $breakpoint) {
-    @media (min-width: #{map-get($breakpoints, $breakpoint)}) {
-      @content;
-    }
-  } @else {
-    @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "
-          + "Please make sure it is defined in `$breakpoints` map.";
+@mixin for-phone-only {
+  @media (max-width: 599px) {
+    @content;
+  }
+}
+@mixin for-tablet-portrait-up {
+  @media (min-width: 600px) {
+    @content;
+  }
+}
+@mixin for-tablet-portait-only {
+  @media (min-width: 600px) and (max-width: 899px) {
+    @content;
+  }
+}
+@mixin for-tablet-landscape-up {
+  @media (min-width: 900px) {
+    @content;
+  }
+}
+@mixin for-tablet-landscape-only {
+  @media (min-width: 900px) and (max-width: 1199px) {
+    @content;
+  }
+}
+@mixin for-desktop-up {
+  @media (min-width: 1200px) {
+    @content;
+  }
+}
+@mixin for-desktop-only {
+  @media (min-width: 1200px) and (max-width: 1799px) {
+    @content;
+  }
+}
+@mixin for-big-desktop-up {
+  @media (min-width: 1800px) {
+    @content;
   }
 }

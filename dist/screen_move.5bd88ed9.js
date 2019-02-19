@@ -333,7 +333,7 @@ function clickedPost(event) {
     url += "&category=" + activeFilter;
   }
 
-  postClicked.parentElement.setAttribute("href", url);
+  window.location = url; //postClicked.parentElement.setAttribute("href", url);
 }
 /* ----------------- DISPLAY PROJECT SUBPAGE ---------------- */
 
@@ -587,7 +587,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49668" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57418" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
