@@ -25,7 +25,7 @@ window.addEventListener("DOMContentLoaded", initNav);
 function initNav() {
   //BUTTONS CATEGORIES
   document
-    .querySelectorAll(".cat-link")
+    .querySelectorAll(".wrapper-cat__link")
     .forEach(element => element.addEventListener("click", clickedFilter));
   //CLICK ON A PROJECT
   gallery.addEventListener("click", clickedPost);

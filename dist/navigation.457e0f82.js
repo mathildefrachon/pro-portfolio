@@ -229,7 +229,7 @@ function displayList(listOfProjects) {
 
 function cloneProject(listOfProjects) {
   listOfProjects.forEach(function (oneProject) {
-    var template = document.querySelector("#project-template").content;
+    var template = document.querySelector(".project--template").content;
     var clone = template.cloneNode(true); // FILL IN THE CLONE
 
     imgLoaded(clone, oneProject); // APPEND
@@ -242,13 +242,13 @@ function cloneProject(listOfProjects) {
 function imgLoaded(clone, oneProject) {
   var downloadingImage = new Image();
   var loader = clone.querySelector(".loader");
-  var projectImg = clone.querySelector(".project-img");
-  var projectWrap = clone.querySelector(".project-wrapper");
+  var projectImg = clone.querySelector(".project--img");
+  var projectWrap = clone.querySelector(".project--wrapper");
   var projectTitle = clone.querySelector("h2");
 
   downloadingImage.onload = function () {
     loader.classList.add("none");
-    projectWrap.classList.remove("width-load");
+    projectWrap.style.width = "auto";
     projectImg.classList.remove("none");
     checkImgOrientation(downloadingImage, projectImg, projectWrap);
   };
@@ -352,6 +352,7 @@ function displayProject(currentArray) {
   downloadingImage.onload = function () {
     console.log(downloadingImage);
     console.log(myProject);
+    document.querySelector(".project--img__sub").style.width = "auto";
     loader.classList.add("none");
     checkImgOrientation(downloadingImage, imgVert, imgWrap);
   };
@@ -369,15 +370,15 @@ function displayInfos(myProject) {
   console.log("infos projets");
   console.log(myProject.description);
   document.querySelector("h1").textContent = myProject.name;
-  document.querySelector(".postsubTitle").textContent = myProject.subtitle;
-  document.querySelector(".postType").textContent = myProject.type;
-  document.querySelector(".postDesc").textContent = myProject.description;
-  document.querySelector(".postKeywords").textContent = myProject.keywords;
+  document.querySelector(".infos__sub--subtitle").textContent = myProject.subtitle;
+  document.querySelector(".infos__sub--type").textContent = myProject.type;
+  document.querySelector(".infos__sub--desc").textContent = myProject.description;
+  document.querySelector(".infos__sub--keywords").textContent = myProject.keywords;
 }
 
 function displayDots(myProject) {
   exports.imgArray = imgArray = myProject.otherimages;
-  var dot_nav = document.querySelector("#dot_nav");
+  var dot_nav = document.querySelector(".project--img--dots");
   console.log("create dots");
   imgArray.forEach(function (img) {
     var dot = document.createElement("div");
@@ -441,7 +442,7 @@ window.addEventListener("DOMContentLoaded", initNav);
 
 function initNav() {
   //BUTTONS CATEGORIES
-  document.querySelectorAll(".cat-link").forEach(function (element) {
+  document.querySelectorAll(".wrapper-cat__link").forEach(function (element) {
     return element.addEventListener("click", _index.clickedFilter);
   }); //CLICK ON A PROJECT
 
@@ -503,7 +504,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53466" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49668" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);

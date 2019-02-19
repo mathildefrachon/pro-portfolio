@@ -116,7 +116,7 @@ function displayList(listOfProjects) {
 //CLONE BY PROJECT AND APPEND
 function cloneProject(listOfProjects) {
   listOfProjects.forEach(oneProject => {
-    let template = document.querySelector("#project-template").content;
+    let template = document.querySelector(".project--template").content;
     let clone = template.cloneNode(true);
     // FILL IN THE CLONE
     imgLoaded(clone, oneProject);
@@ -129,13 +129,13 @@ function cloneProject(listOfProjects) {
 function imgLoaded(clone, oneProject) {
   let downloadingImage = new Image();
   let loader = clone.querySelector(".loader");
-  let projectImg = clone.querySelector(".project-img");
-  let projectWrap = clone.querySelector(".project-wrapper");
+  let projectImg = clone.querySelector(".project--img");
+  let projectWrap = clone.querySelector(".project--wrapper");
   let projectTitle = clone.querySelector("h2");
 
   downloadingImage.onload = function() {
     loader.classList.add("none");
-    projectWrap.classList.remove("width-load");
+    projectWrap.style.width = "auto";
     projectImg.classList.remove("none");
     checkImgOrientation(downloadingImage, projectImg, projectWrap);
   };
@@ -234,6 +234,7 @@ function displayProject(currentArray) {
   downloadingImage.onload = function() {
     console.log(downloadingImage);
     console.log(myProject);
+    document.querySelector(".project--img__sub").style.width = "auto";
     loader.classList.add("none");
     checkImgOrientation(downloadingImage, imgVert, imgWrap);
   };
@@ -251,15 +252,18 @@ function displayInfos(myProject) {
   console.log("infos projets");
   console.log(myProject.description);
   document.querySelector("h1").textContent = myProject.name;
-  document.querySelector(".postsubTitle").textContent = myProject.subtitle;
-  document.querySelector(".postType").textContent = myProject.type;
-  document.querySelector(".postDesc").textContent = myProject.description;
-  document.querySelector(".postKeywords").textContent = myProject.keywords;
+  document.querySelector(".infos__sub--subtitle").textContent =
+    myProject.subtitle;
+  document.querySelector(".infos__sub--type").textContent = myProject.type;
+  document.querySelector(".infos__sub--desc").textContent =
+    myProject.description;
+  document.querySelector(".infos__sub--keywords").textContent =
+    myProject.keywords;
 }
 
 function displayDots(myProject) {
   imgArray = myProject.otherimages;
-  const dot_nav = document.querySelector("#dot_nav");
+  const dot_nav = document.querySelector(".project--img--dots");
   console.log("create dots");
 
   imgArray.forEach(img => {

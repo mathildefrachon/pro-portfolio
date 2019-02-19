@@ -8,7 +8,8 @@
     <title>M A T H I L D E F R A C H O N</title>
     <!-- <link rel="stylesheet" href="css/main.css"> -->
     <link rel="stylesheet" href="css/animation.css">
-    <link rel="stylesheet" href="css/about.css">
+    <!-- <link rel="stylesheet" href="css/about.css"> -->
+    <link rel="stylesheet" href="css/about.scss">
     <link rel="stylesheet" href="css/mobile.css">
     <link rel="stylesheet" href="css/style.scss">
     <link rel="stylesheet" href="css/sides.scss">
@@ -19,7 +20,7 @@
 
 <body>
     
-    <!-- ------ CONTACT PAGE -------- -->
+    <!-- ------ CONTACT SIDE -------- -->
 
     <div class="screen__side screen__side__contact width0">
         <div class="screen__side--wrapper screen__side--wrapper__contact opacity">
@@ -290,7 +291,7 @@
     </div>
     <!--END OF ABOUT-->
 
-
+  <!-- ------ FILTER SIDE -------- -->
     <div class="screen__side screen__side__filter width0">
         <a href="#" class="buttons buttons--cross buttons--cross__filter"><img class="icons--img" src="img/cross.png"></a>
         <div class="screen__side--wrapper screen__side--wrapper__filter opacity">
@@ -317,9 +318,7 @@
     </div>
 
 
-
-
-    <!-- PROJECT PAGE DESKTOP -->
+    <!-- PROJECT PAGE  -->
 
     <div  class="none screen screen__gallery">
 
@@ -332,9 +331,7 @@
     </div>
 
 
-
-
-
+    <!-- WELCOME PAGE  -->
     <div  class="here screen screen__welcome">
 
         <!-- <img src="img/background_site_light.jpg " id="marble " alt="background_marble "> -->
@@ -349,9 +346,8 @@
     </div>
 
 
+   <!-- NAV -->
 
-
-   
         <nav class="c-menu c-menu--top">
             <a class="c-menu__link c-menu--top__link c-menu__link--left" href="#" id="a-projects">PROJECTS</a>
             <a class="c-menu__link c-menu--top__link c-menu__link--right" href="#" id="a-about">ABOUT</a>
@@ -363,13 +359,13 @@
         </nav>
  
 
-    <template id="project-template">
+    <template class="project--template">
        
-        <div class="project-wrapper width-load">
+        <div class="project project--wrapper">
             <div class="loader"></div>
-            <h2 class="project-title"></h2>
-            <a id="subpage-link" onclick="displayProject(currentArray)">
-                <img class="project-img none"  alt="">
+            <a class="project--link" id="subpage-link" onclick="displayProject(currentArray)">
+                <img class="project--img none"  alt="">
+                <h2 class="project--title"></h2>
             </a>
         </div>
 

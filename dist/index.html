@@ -8,18 +8,19 @@
     <title>M A T H I L D E F R A C H O N</title>
     <!-- <link rel="stylesheet" href="css/main.css"> -->
     <link rel="stylesheet" href="/animation.0561438f.css">
-    <link rel="stylesheet" href="/about.b8cf0a4a.css">
+    <!-- <link rel="stylesheet" href="css/about.css"> -->
+    <link rel="stylesheet" href="/about.e1433f89.css">
     <link rel="stylesheet" href="/mobile.9ad9dbe1.css">
     <link rel="stylesheet" href="/style.6b54f5b7.css">
     <link rel="stylesheet" href="/sides.3aafa731.css">
     <link href="https://fonts.googleapis.com/css?family=Advent+Pro:100,300,400,500,600,700">
     <link href="https://fonts.googleapis.com/css?family=Khand:300,400,500,600,700">
     
-<script src="/animation.0561438f.js"></script><script src="/about.b8cf0a4a.js"></script><script src="/mobile.9ad9dbe1.js"></script><script src="/style.6b54f5b7.js"></script><script src="/sides.3aafa731.js"></script></head>
+<script src="/animation.0561438f.js"></script><script src="/about.e1433f89.js"></script><script src="/mobile.9ad9dbe1.js"></script><script src="/style.6b54f5b7.js"></script><script src="/sides.3aafa731.js"></script></head>
 
 <body>
     
-    <!-- ------ CONTACT PAGE -------- -->
+    <!-- ------ CONTACT SIDE -------- -->
 
     <div class="screen__side screen__side__contact width0">
         <div class="screen__side--wrapper screen__side--wrapper__contact opacity">
@@ -288,7 +289,7 @@
     </div>
     <!--END OF ABOUT-->
 
-
+  <!-- ------ FILTER SIDE -------- -->
     <div class="screen__side screen__side__filter width0">
         <a href="#" class="buttons buttons--cross buttons--cross__filter"><img class="icons--img" src="/cross.bc548973.png"></a>
         <div class="screen__side--wrapper screen__side--wrapper__filter opacity">
@@ -315,9 +316,7 @@
     </div>
 
 
-
-
-    <!-- PROJECT PAGE DESKTOP -->
+    <!-- PROJECT PAGE  -->
 
     <div class="none screen screen__gallery">
 
@@ -330,9 +329,7 @@
     </div>
 
 
-
-
-
+    <!-- WELCOME PAGE  -->
     <div class="here screen screen__welcome">
 
         <!-- <img src="img/background_site_light.jpg " id="marble " alt="background_marble "> -->
@@ -347,9 +344,8 @@
     </div>
 
 
+   <!-- NAV -->
 
-
-   
         <nav class="c-menu c-menu--top">
             <a class="c-menu__link c-menu--top__link c-menu__link--left" href="#" id="a-projects">PROJECTS</a>
             <a class="c-menu__link c-menu--top__link c-menu__link--right" href="#" id="a-about">ABOUT</a>
@@ -361,13 +357,13 @@
         </nav>
  
 
-    <template id="project-template">
+    <template class="project--template">
        
-        <div class="project-wrapper width-load">
+        <div class="project project--wrapper">
             <div class="loader"></div>
-            <h2 class="project-title"></h2>
-            <a id="subpage-link" onclick="displayProject(currentArray)">
-                <img class="project-img none" alt="">
+            <a class="project--link" id="subpage-link" onclick="displayProject(currentArray)">
+                <img class="project--img none" alt="">
+                <h2 class="project--title"></h2>
             </a>
         </div>
 

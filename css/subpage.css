@@ -1,34 +1,34 @@
 /*//////CONTAINERS///////*/
 
-#oneProject {
+/* #oneProject {
   width: 100vw;
   height: 100vh;
   background-color: #094943;
-}
-
+} */
+/* 
 .infos_container,
 .img_container {
   height: 100vh;
   transition: all ease 1s;
-}
+} */
 
-.infos_container {
+/* .infos_container {
   background-color: #052d29;
   opacity: 0.9;
   position: fixed;
   overflow-x: hidden;
   z-index: 50;
   float: left;
-}
+} */
 
-.img_container {
+/* .img_container {
   background-color: #094943;
   float: right;
   position: relative;
-}
+} */
 
 /* NAV */
-
+/* 
 #oneProject #top_nav {
   padding: 3% 3% 0% 3%;
 }
@@ -47,7 +47,7 @@
 
 #crossM {
   display: none;
-}
+} */
 
 /*//////// ELEMENTS IMG CONTAINER///////// */
 

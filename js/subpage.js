@@ -11,7 +11,7 @@ import {
 let index = urlParams.get("index");
 let imgIndex = 1;
 // let image = document.querySelector("img");
-const images = document.querySelector(".images");
+const images = document.querySelector(".project--img__sub");
 
 // CLICK ON IMG
 images.addEventListener("click", clickedImages);
@@ -39,9 +39,13 @@ function clickedImages() {
 
 /* NEXT AND PREVIOUS PROJECT */
 
-document.querySelector("#next").addEventListener("click", nextProject);
+document
+  .querySelector(".buttons--sub__next")
+  .addEventListener("click", nextProject);
 
-document.querySelector("#previous").addEventListener("click", previousProject);
+document
+  .querySelector(".buttons--sub__previous")
+  .addEventListener("click", previousProject);
 
 function nextProject() {
   console.log("next");
@@ -49,29 +53,29 @@ function nextProject() {
   const thisIndex = currentArray.findIndex(pr => pr.wpid == index);
   console.log(thisIndex);
   let nextIndex = thisIndex + 1;
+  // RETURN AT THE BEGINNING
   if (nextIndex >= currentArray.length) {
     nextIndex = 0;
   }
-
+  // IF CAT THEN NEXT WITHIN CAT
   if (cat) {
     console.log("we have a category:" + cat);
-
     let newUrl =
       "subpage.html?index=" +
       currentArray[nextIndex].wpid +
       "&category=" +
       activeFilter;
     console.log(newUrl);
-
-    // document.querySelector("#next").setAttribute("href", newUrl);
   } else {
     let newUrl = "subpage.html?index=" + currentArray[nextIndex].wpid;
-    document.querySelector("#next").setAttribute("href", newUrl);
+    document.querySelector(".buttons--sub__next").setAttribute("href", newUrl);
   }
-
+  // GIVES NEW URL AFTER A BIT
   setTimeout(
     function() {
-      document.querySelector("#next").setAttribute("href", newUrl);
+      document
+        .querySelector(".buttons--sub__next")
+        .setAttribute("href", newUrl);
     },
     500,
     newUrl
@@ -80,29 +84,49 @@ function nextProject() {
 
 function previousProject() {
   console.log("previous");
-
+  closeInfos();
   const thisIndex = currentArray.findIndex(pr => pr.wpid == index);
   let nextIndex = thisIndex - 1;
+  // RETURN AT THE BEGINNING
   if (nextIndex < 0) {
     nextIndex = currentArray.length - 1;
   }
-
-  let newUrl =
-    "subpage.html?index=" +
-    currentArray[nextIndex].wpid +
-    "&category=" +
-    activeFilter;
-
-  document.querySelector("#previous").setAttribute("href", newUrl);
+  // IF CAT THEN NEXT WITHIN CAT
+  if (cat) {
+    console.log("we have a category:" + cat);
+    let newUrl =
+      "subpage.html?index=" +
+      currentArray[nextIndex].wpid +
+      "&category=" +
+      activeFilter;
+    console.log(newUrl);
+  } else {
+    let newUrl = "subpage.html?index=" + currentArray[nextIndex].wpid;
+    document.querySelector(".buttons--sub__next").setAttribute("href", newUrl);
+  }
+  // GIVES NEW URL AFTER A BIT
+  setTimeout(
+    function() {
+      document
+        .querySelector(".buttons--sub__next")
+        .setAttribute("href", newUrl);
+    },
+    500,
+    newUrl
+  );
 }
 
 /* DISPLAY INFOS - OPEN CLOSE MENU INFOS */
 
-document.querySelector("#plus").addEventListener("click", displayInfos);
-document.querySelector("#crossI").addEventListener("click", closeInfos);
-const img_container = document.querySelector(".img_container");
-const infos_container = document.querySelector(".infos_container");
-const infos = document.querySelector(".infos");
+document
+  .querySelector(".buttons--sub__plus")
+  .addEventListener("click", displayInfos);
+document
+  .querySelector(".buttons--cross__sub--infos")
+  .addEventListener("click", closeInfos);
+const img_container = document.querySelector(".project--wrapper__sub");
+const infos_container = document.querySelector(".project--infos__sub");
+const infos = document.querySelector(".infos__sub");
 console.log(infos_container);
 
 function displayInfos() {
